@@ -1,10 +1,8 @@
 package ru.springboot.pp312.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.persistence.*;
 import org.springframework.stereotype.Repository;
 import ru.springboot.pp312.entity.User;
-
 import java.util.List;
 
 

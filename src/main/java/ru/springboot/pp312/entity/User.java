@@ -1,7 +1,7 @@
 package ru.springboot.pp312.entity;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
