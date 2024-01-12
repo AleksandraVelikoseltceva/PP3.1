@@ -5,14 +5,14 @@ import ru.springboot.pp312.entity.User;
 import java.util.List;
 
 public interface UserDao {
+    public List<User> findAll();
 
-    List<User> getAllUsers();
+    public User show(Integer id);
 
-    User getUser(int id);
+    public void save(User user);
 
-    void saveUser(User user);
+    public void update(Integer id, User updatedUser);
 
-    void updateUser(int id, User updatedUser);
-
-    void deleteUser(int id);
+    public void delete(Integer id);
 }
+

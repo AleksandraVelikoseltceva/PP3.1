@@ -3,9 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit user</title>
+    <title>Add User</title>
     <style>
-        @import url(http://fonts.googleapis.com/css?family=Raleway:700,800);
+        @import url(https://fonts.googleapis.com/css?family=Raleway:700,800);
         body {
             background: #6ED0F6;
             color: #fff;
@@ -14,7 +14,7 @@
         }
         form {
             width: 450px;
-            height: 330px;
+            height: 370px;
             margin: -185px -225px;
             position: absolute;
             left: 50%;
@@ -66,18 +66,21 @@
     </style>
 </head>
 <body>
-<form th:method="PATCH" th:action="@{/users/?id={id}(id=${user.getId()})}" th:object="${user}">
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <br/>
-    <label for="surname">Enter surname: </label>
-    <input type="text" th:field="*{surname}" id="surname"/>
-    <br/>
-    <label for="age">Enter age: </label>
-    <input type="number" th:field="*{age}" id="age"/>
-    <br/>
-    <input type="submit" value="Edit User"/>
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
+    <div id="wrapper">
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <br/>
+        <label for="surname">Enter surname: </label>
+        <input type="text" th:field="*{surname}" id="surname"/>
+        <br/>
+        <label for="age">Enter age: </label>
+        <input type="number" th:field="*{age}" id="age"/>
+        <br/>
+    </div>
+    <button type="submit">
+        Add user
+    </button>
 </form>
-
 </body>
 </html>

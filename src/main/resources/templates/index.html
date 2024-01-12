@@ -1,10 +1,12 @@
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>all-users</title>
     <style>
         @import url(http://fonts.googleapis.com/css?family=Raleway:700,800);
+
         body {
             background: #6ED0F6;
             color: #fff;
@@ -14,18 +16,31 @@
             margin-right: auto;
             width: 400px
         }
+        button {
+            background: #079BCF;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 27px;
+            height: 72px;
+            width: 100%;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all .3s cubic-bezier(.6,0,.4,1);}
     </style>
 </head>
 <body>
 <h1>All Users List</h1>
-<div th:each="user : ${users}">
-    <a th:href="@{/{id}(id=${user.getId()})}" th:text="${user.getName() + ', ' + user.getSurname() + ', ' + user.getAge()}">user</a>
-    <br>
+<div th:each="u: ${users}">
+    <a th:href="@{/users/?id={id}(id=${u.getId()})}"
+       th:text="${u.getName()} + ' ' + ${u.getSurname()} + ', ' + ${u.getAge()}">user</a>
 </div>
-
 <br/>
-<br>
-
-<a th:href="@{/create}">Create user</a>
+<hr/>
+<a href="/users/new">
+    <button type="submit">Create new User</button>
+</a>
 </body>
 </html>

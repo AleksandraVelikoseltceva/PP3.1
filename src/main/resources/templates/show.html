@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>User</title>
     <style>
         @import url(http://fonts.googleapis.com/css?family=Raleway:700,800);
+
         body {
             background: #6ED0F6;
             color: #fff;
@@ -15,6 +17,7 @@
             margin-top: auto;
             width: 300px
         }
+
         button {
             background: #079BCF;
             border: none;
@@ -27,21 +30,35 @@
             width: 100%;
             margin-bottom: 10px;
             overflow: hidden;
-            transition: all .3s cubic-bezier(.6,0,.4,1);}
+            transition: all .3s cubic-bezier(.6, 0, .4, 1);
+        }
     </style>
 </head>
 <body>
-<ul th:object="${user}">
-    <li>name: <span th:text="*{name}"></span></li>
-    <li>surname: <span th:text="*{surname}"></span></li>
-    <li>age: <span th:text="*{age}"></span></li>
-    <li>ID: <span th:text="*{id}"></span></li>
-</ul>
-<a th:href="@{/{id}/edit(id=${user.getId()})}">Edit user</a>
-<br>
-<br>
-<form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
-    <button type="submit">Delete</button>
-</form>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <td th:text="${user.getName()}"/>
+    <td th:text="${user.getSurname()}"/>
+    <td th:text="${user.getAge()}"/>
+    </tr>
+</table>
+<br/>
+<a href="/users">
+    <button type="submit">Return to Users</button></a>
+<br/>
+<br/>
+<a th:href="@{/users/edit/?id={id}(id=${user.getId()})}">
+    <button type="submit">Edit User</button></a>
+<br/>
+<br/>
+<form th:method="DELETE" th:action="@{/users/?id={id}(id=${user.getId()})}">
+    <button type="submit">Delete User</button>
 </body>
 </html>
+
